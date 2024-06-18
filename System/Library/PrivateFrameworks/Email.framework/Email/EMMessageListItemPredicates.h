@@ -1,0 +1,90 @@
+@class NSString, NSObject;
+@protocol OS_os_log;
+
+@interface EMMessageListItemPredicates : NSObject <EFLoggable>
+
+@property (class, readonly) NSObject<OS_os_log> *log;
+
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *debugDescription;
+
++ (id)predicateForFlagColor:(unsigned long long)a0;
++ (id)predicateForSendLaterMessages;
++ (id)predicateForNotifyMessages;
++ (id)predicateForMessagesWithoutSenders:(id)a0;
++ (id)predicateForRecentMessages;
++ (id)_predicateForMessagesInMailboxWithURL:(id)a0;
++ (id)predicateForMessagesInMailboxes:(id)a0;
++ (BOOL)_isPredicateForMessagesInMailboxObjectIDs:(id)a0 mailboxObjectIDs:(id *)a1;
++ (id)predicateForUnsubscribableMessages;
++ (id)_predicateForActiveFollowUpMessagesIncludeExpired:(BOOL)a0;
++ (id)predicateForCCMeMessages;
++ (BOOL)isPredicateForMessagesWithActiveFollowUp:(id)a0 mailboxTypeResolver:(id)a1 inSent:(BOOL *)a2 sentMailboxObjectIDs:(id *)a3;
++ (id)_spotlightPredicateForPredicate:(id)a0;
++ (id)predicateForAnySenderBuckets:(id)a0;
++ (id)predicateForMessagesWithUnfiredFollowUp;
++ (id)_predicateForMessagesInMailboxWithType:(id)a0;
++ (id)threadScopeForPredicate:(id)a0 withMailboxTypeResolver:(id)a1;
++ (id)_predicateForFollowUpMessages;
++ (id)predicateForMessagesInMailboxesWithObjectIDs:(id)a0;
++ (id)predicateForAccount:(id)a0;
++ (id)predicateForUnfiredReadLaterMessagesInInbox;
++ (id)predicateForReadLaterMessages;
++ (id)predicateForUnreadMessages;
++ (id)sortDescriptorForKeyPath:(id)a0 ascending:(BOOL)a1;
++ (id)predicateForTodayMessages;
++ (id)predicateForMessagesWithActiveFollowUpInAccountsOfMailboxes:(id)a0 mailboxTypeResolver:(id)a1;
++ (id)sortDescriptorForDateAscending:(BOOL)a0;
++ (id)predicateForFlaggedMessages;
++ (id)predicateForMessagesWithThreadScope:(id)a0;
++ (id)predicateForMessagesInMailboxWithType:(long long)a0;
++ (id)predicateForExcludingMessagesInMailboxWithType:(long long)a0;
++ (id)predicateForPrimaryBucketUnreadCountInMailboxes:(id)a0;
++ (BOOL)isPredicateForMessagesInMailboxWithType:(id)a0 mailboxType:(long long *)a1;
++ (id)predicateForIsVIP:(BOOL)a0;
++ (id)mailboxURLsForPredicate:(id)a0;
++ (id)_keyPathsForFlagChange:(id)a0;
++ (id)predicateForMessagesInMailboxesWithTypes:(id)a0;
++ (id)predicateForSendLaterMessagesWithStartDate:(id)a0 endDate:(id)a1;
++ (id)predicateFromPredicate:(id)a0 ignoringPredicates:(id)a1;
++ (id)predicateForMuteMessages;
++ (id)predicateForIncludesMeMessages;
++ (id)predicateForMessagesInMailbox:(id)a0;
++ (id)predicateForMessagesWithActiveFollowUp;
++ (BOOL)predicate:(id)a0 appliesToFlagChange:(id)a1;
++ (id)predicateForMessagesWithSenders:(id)a0;
++ (id)predicateForExcludingMessagesInMailboxes:(id)a0;
++ (id)predicateForUnflaggedMessages;
++ (id)predicateForMessagesNewerThanDate:(id)a0;
++ (id)predicateForReadMessages;
++ (BOOL)_isPredicateForMessagesWithActiveFollowUp:(id)a0;
++ (id)_dateRangePredicateForListItemKeyPath:(id)a0 startDate:(id)a1 endDate:(id)a2;
++ (long long)dateSortOrderFromSortDescriptors:(id)a0;
++ (id)predicateForSenderBucket:(long long)a0;
++ (id)predicateForExcludingMessagesInMailboxObjectID:(id)a0;
++ (id)predicateForExcludingMessagesInMailboxWithURL:(id)a0;
++ (id)predicateForMessagesWithActiveFollowUpInSent;
++ (id)predicateForExcludingMessagesInMailboxesWithTypes:(id)a0;
++ (id)predicateForMessagesWithoutSender:(id)a0;
++ (id)predicateForToMeMessages;
++ (id)predicateForExcludingMessagesInMailbox:(id)a0;
++ (id)_predicateForKeyPath:(id)a0 value:(id)a1;
++ (BOOL)isPredicateForMessagesInMailboxObjectID:(id)a0 mailboxObjectID:(id *)a1;
++ (id)predicateFromPredicate:(id)a0 ignoringKeyPaths:(id)a1;
++ (id)predicateForReadLaterMessagesWithStartDate:(id)a0 endDate:(id)a1;
++ (id)predicateForFiredReadLaterMessages;
++ (id)_predicateForAccountWithObjectID:(id)a0;
++ (id)predicateForMessagesInMailboxWithObjectID:(id)a0;
++ (id)predicateForExcludingMessagesInMailboxesWithObjectIDs:(id)a0;
++ (id)predicateForMessagesWithMailboxScope:(id)a0;
++ (id)_predicateForReadLaterMessagesFired:(BOOL)a0;
++ (id)predicateForMessagesWithAttachments;
++ (id)predicateForMessagesInConversation:(long long)a0;
++ (id)mailboxScopeForPredicate:(id)a0 withMailboxTypeResolver:(id)a1;
++ (id)predicateForMessagesWithSender:(id)a0;
++ (id)spotlightPredicateForPredicate:(id)a0;
+
+
+@end

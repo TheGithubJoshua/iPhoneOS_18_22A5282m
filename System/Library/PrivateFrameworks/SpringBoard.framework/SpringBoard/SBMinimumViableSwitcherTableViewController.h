@@ -1,0 +1,86 @@
+@class SBBestAppSuggestion, NSString, SBApplicationSceneView, BSAnimationSettings;
+@protocol SBSwitcherContentViewControllerDataSource, SBSwitcherContentViewControllerDelegate;
+
+@interface SBMinimumViableSwitcherTableViewController : UITableViewController <SBSwitcherContentViewControlling> {
+    SBApplicationSceneView *_temporaryAppView;
+    SBApplicationSceneView *_temporarySideAppView;
+}
+
+@property (weak, nonatomic) id<SBSwitcherContentViewControllerDelegate> delegate;
+@property (weak, nonatomic) id<SBSwitcherContentViewControllerDataSource> dataSource;
+@property (retain, nonatomic) SBBestAppSuggestion *bestAppSuggestion;
+@property (nonatomic, getter=isShowingModifierTimeline) BOOL showModifierTimeline;
+@property (nonatomic) long long contentOrientation;
+@property (nonatomic, getter=isAsyncRenderingDisabled) BOOL asyncRenderingDisabled;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) BOOL canInterruptActiveTransition;
+@property (readonly, copy, nonatomic) BSAnimationSettings *defaultTransitionAnimationSettings;
+
+- (double)snapshotScaleForSceneHandle:(id)a0;
+- (BOOL)isWindowVisible;
+- (id)iconForAppLayout:(id)a0;
+- (void)noteModelDidMutateForInsertionOfAppLayouts:(id)a0 atIndexes:(id)a1 willAnimate:(BOOL)a2;
+- (id)liveContentOverlayForAppLayout:(id)a0;
+- (id)liveOverlayForSceneHandle:(id)a0;
+- (BOOL)shouldAnimateInsertionOfAppLayouts:(id)a0 atIndexes:(id)a1;
+- (void)removeLayoutRole:(long long)a0 inSpace:(id)a1 mutationBlock:(id /* block */)a2 reason:(long long)a3;
+- (id)animationControllerForTransitionRequest:(id)a0;
+- (id)leadingStatusBarStyleRequest;
+- (void)noteKeyboardFocusDidChangeToSceneID:(id)a0;
+- (double)minimumHomeScreenScale;
+- (void)performTransitionWithContext:(id)a0 animated:(BOOL)a1 completion:(id /* block */)a2;
+- (id)overlaySceneHandle;
+- (id)prepareOverlayForContentRotation;
+- (id)trailingStatusBarStyleRequest;
+- (BOOL)handleHeadsetButtonPress:(BOOL)a0;
+- (BOOL)handleVoiceCommandButtonPress;
+- (BOOL)handleHomeButtonLongPress;
+- (BOOL)handleHomeButtonPress;
+- (BOOL)canPerformKeyboardShortcutAction:(long long)a0 forBundleIdentifier:(id)a1;
+- (BOOL)handleHomeButtonDoublePress;
+- (BOOL)isUserInteractionEnabled;
+- (BOOL)handleLockButtonPress;
+- (BOOL)handleVolumeUpButtonPress;
+- (BOOL)handleVolumeDownButtonPress;
+- (id)foregroundAppLayouts;
+- (id)liveOverlayForSceneIdentityToken:(id)a0;
+- (BOOL)shouldRubberbandFullScreenHomeGrabberView;
+- (void)noteAppLayoutsDidChange;
+- (void)viewDidLoad;
+- (void)tapReceivedForGrabberTongueAtEdge:(unsigned long long)a0;
+- (BOOL)shouldAcceleratedHomeButtonPressBegin;
+- (void)failMultitaskingGesturesForReason:(id)a0;
+- (long long)tableView:(id)a0 numberOfRowsInSection:(long long)a1;
+- (void)relinquishTransientOverlayViewController:(id)a0;
+- (long long)numberOfSectionsInTableView:(id)a0;
+- (char)activityModeForAppLayout:(id)a0;
+- (char)jetsamModeForAppLayout:(id)a0;
+- (void)sceneLayoutTransitionWillStartWithTransitionContext:(id)a0;
+- (id)liveScenesIdentityTokens;
+- (void)invalidate;
+- (void).cxx_destruct;
+- (void)acquiredViewController:(id)a0 forTransientOverlayAppLayout:(id)a1;
+- (double)contentAspectRatio;
+- (BOOL)isStatusBarHiddenForAppLayout:(id)a0;
+- (void)prepareAnimatedInsertionOfAppLayouts:(id)a0 atIndexes:(id)a1;
+- (void)performKeyboardShortcutAction:(long long)a0;
+- (void)respondToInAppStatusBarRequestedHiddenUpdateAnimated:(BOOL)a0;
+- (id)tableView:(id)a0 cellForRowAtIndexPath:(id)a1;
+- (void)handleFluidSwitcherGestureManager:(id)a0 didUpdateGesture:(id)a1;
+- (BOOL)shouldAddAppLayoutToFront:(id)a0 forTransitionWithContext:(id)a1 transitionCompleted:(BOOL)a2;
+- (double)switcherCardScale;
+- (void)performAnimatedInsertionOfAppLayouts:(id)a0 atIndexes:(id)a1 completion:(id /* block */)a2;
+- (void)tableView:(id)a0 didSelectRowAtIndexPath:(id)a1;
+- (void)handleFluidSwitcherGestureManager:(id)a0 didBeginGesture:(id)a1;
+- (void)handleFluidSwitcherGestureManager:(id)a0 didEndGesture:(id)a1;
+- (void)clickReceivedForHomeGrabberView:(id)a0;
+- (BOOL)tableView:(id)a0 canEditRowAtIndexPath:(id)a1;
+- (void)tableView:(id)a0 commitEditingStyle:(long long)a1 forRowAtIndexPath:(id)a2;
+- (id)tableView:(id)a0 titleForDeleteConfirmationButtonForRowAtIndexPath:(id)a1;
+- (id)_appLayouts;
+- (id)_statusBarStyleRequestForDefaultStyle;
+
+@end

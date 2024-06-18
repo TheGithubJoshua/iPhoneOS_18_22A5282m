@@ -1,0 +1,74 @@
+@class ACHActivityAwardingDateCache, ACHActivityAwardingDataProvider;
+
+@interface ACHActivityAwardingEnvironment : NSObject
+
+@property (retain, nonatomic) ACHActivityAwardingDataProvider *dataProvider;
+@property (retain, nonatomic) ACHActivityAwardingDateCache *dateCache;
+@property (nonatomic) BOOL valueForKeyLoggingEnabled;
+@property (nonatomic) unsigned long long experienceType;
+
+- (id)initWithDataProvider:(id)a0;
+- (id)bestStandGoal;
+- (id)previousBestStandStreak;
+- (id)yesterdayMoveTimeValue;
+- (id)todayMoveGoal;
+- (id)currentStandStreak;
+- (id)previousStandPercentage;
+- (id)currentMovePercentage;
+- (id)previousBestExerciseGoal;
+- (id)dayOfWeekForLastDayOfFitnessWeek;
+- (id)bestStandStreak;
+- (id)yesterdayExerciseValue;
+- (id)totalDaysOfExerciseHistory;
+- (id)previousBestMoveGoal;
+- (id)valueForKey:(id)a0;
+- (id)currentExerciseStreak;
+- (id)totalStandGoalsMet;
+- (id)previousMoveTimePercentage;
+- (id)previousExercisePercentage;
+- (id)todayMoveTimeValue;
+- (id)bestExerciseGoal;
+- (BOOL)todayIsStandalonePhoneFitnessMode;
+- (id)previousBestExerciseStreak;
+- (id)requiredDaysOfActivityHistoryForRecords;
+- (id)previousBestMoveTimeGoal;
+- (id)todayMoveValue;
+- (id)todayMoveTimeGoal;
+- (id)currentExercisePercentage;
+- (void).cxx_destruct;
+- (id)currentStreakForAllActivity;
+- (id)todayExerciseValue;
+- (id)dayOfMonthForToday;
+- (id)bestStandValue;
+- (id)previousBestStandGoal;
+- (id)currentStandPercentage;
+- (id)dayOfWeekForToday;
+- (void)setCurrentDateComponents:(id)a0;
+- (id)yesterdayStandValue;
+- (id)totalDaysOfStandHistory;
+- (long long)todayActivityMoveMode;
+- (id)totalDaysOfMoveHistory;
+- (id)previousMovePercentage;
+- (id)yesterdayMoveValue;
+- (id)bestMoveGoal;
+- (id)todayExerciseGoal;
+- (id)totalExerciseGoalsMet;
+- (id)bestMoveValue;
+- (id)todayAgnosticMoveGoal;
+- (id)valueForUndefinedKey:(id)a0;
+- (id)currentMoveTimePercentage;
+- (id)bestMoveStreak;
+- (id)todayStandValue;
+- (id)requiredDaysOfActivityHistoryForStreaks;
+- (id)totalMoveGoalsMet;
+- (id)previousBestMoveStreak;
+- (id)bestMoveTimeGoal;
+- (id)bestExerciseValue;
+- (id)numberOfDaysInThisMonth;
+- (id)bestMoveTimeValue;
+- (id)currentMoveStreak;
+- (id)bestExerciseStreak;
+- (id)todayStandGoal;
+- (id)todayAgnosticMoveValue;
+
+@end

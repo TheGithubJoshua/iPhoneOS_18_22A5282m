@@ -1,0 +1,80 @@
+@class CTTelephonyNetworkInfoDelegatePlus, NSString, NSMutableDictionary, CTServiceDescriptorContainer, NSDictionary, CoreTelephonyClient, CTCarrier;
+@protocol CTTelephonyNetworkInfoDelegate;
+
+@interface CTTelephonyNetworkInfo : NSObject <CoreTelephonyClientDataDelegateInternal, CoreTelephonyClientRegistrationDelegateInternal> {
+    CoreTelephonyClient *_client;
+    CoreTelephonyClient *_clientPlus;
+    CTTelephonyNetworkInfoDelegatePlus *_delegatePlus;
+    id<CTTelephonyNetworkInfoDelegate> _delegate;
+    id /* block */ _subscriberCellularProviderDidUpdateNotifier;
+    BOOL _initialized;
+}
+
+@property (retain) NSMutableDictionary *serviceSubscriberCellularProviders;
+@property (retain) NSMutableDictionary *cachedCurrentRadioAccessTechnology;
+@property (retain) NSMutableDictionary *cachedSignalStrength;
+@property (retain) NSMutableDictionary *cachedCellIds;
+@property int cachedDataBearerCellularTechnology;
+@property BOOL dataBearerCellularTechnologyInitialized;
+@property unsigned int cachedNrFrequencyRange;
+@property BOOL nrFrequencyRangeInitialized;
+@property (readonly) CTServiceDescriptorContainer *descriptors;
+@property struct queue { struct object { struct dispatch_object_s *fObj; } fObj; } clientQueue;
+@property (readonly, copy) NSString *dataServiceIdentifier;
+@property (weak) id<CTTelephonyNetworkInfoDelegate> delegate;
+@property (readonly, retain) CTCarrier *subscriberCellularProvider;
+@property (copy, nonatomic) id /* block */ serviceSubscriberCellularProvidersDidUpdateNotifier;
+@property (copy, nonatomic) id /* block */ subscriberCellularProviderDidUpdateNotifier;
+@property (readonly, retain, nonatomic) NSDictionary *serviceCurrentRadioAccessTechnology;
+@property (readonly, retain, nonatomic) NSString *currentRadioAccessTechnology;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *debugDescription;
+
+- (void)carrierBundleChange:(id)a0;
+- (id)initWithClient:(id)a0;
+- (void)dataStatusUpdate:(id)a0 dataStatusInfo:(id)a1;
+- (id)init;
+- (void)updateNrFrequencyRange:(unsigned int)a0;
+- (void)queryRat;
+- (void)tryInitNrFrequencyRange;
+- (void)tryInitDataBearer;
+- (BOOL)getMobileCountryCode:(id)a0 andIsoCountryCode:(id)a1 forContext:(id)a2 withError:(id *)a3;
+- (void)updateLegacyRat:(id)a0;
+- (void)updateRat:(id)a0 descriptor:(id)a1;
+- (id)cellId;
+- (void)regDataModeChanged:(id)a0 dataMode:(int)a1;
+- (id)getFirstCellId;
+- (id)radioAccessTechnology;
+- (void)setServiceSubscriberCellularProviderDidUpdateNotifier:(id /* block */)a0;
+- (BOOL)getAllowsVOIP:(BOOL *)a0 forContext:(id)a1 withError:(id *)a2;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (BOOL)getCarrierName:(id)a0 forContext:(id)a1 withError:(id *)a2;
+- (void)tryInitPrivateFunctionality;
+- (id)currentDataBearerTechnology;
+- (void)querySignalStrengthForDescriptor:(id)a0;
+- (void)updateSignalStrength:(id)a0 descriptor:(id)a1;
+- (id)currentNrFrequencyRange;
+- (void)tryInitDelegatePlus;
+- (id)serviceCellId;
+- (void)queryCTSignalStrength;
+- (void)queryRatForDescriptor:(id)a0;
+- (void)postNotificationIfReady:(id)a0 object:(id)a1;
+- (void)cellChanged:(id)a0 cell:(id)a1;
+- (void)dealloc;
+- (void)queryCellIds;
+- (void)currentDataServiceDescriptorChanged:(id)a0;
+- (id)serviceSignalStrength;
+- (void)queryDataBearer;
+- (void)queryNrFrequencyRange;
+- (void)signalStrengthChanged:(id)a0 info:(id)a1;
+- (id /* block */)serviceSubscribersCellularProviderDidUpdateNotifier;
+- (void)updateDataBearer:(int)a0;
+- (void)updateCellId:(id)a0 forDescriptor:(id)a1;
+- (id)signalStrength;
+- (BOOL)updateNetworkInfoAndShouldNotifyClient:(BOOL *)a0 forContext:(id)a1;
+- (BOOL)getMobileNetworkCode:(id)a0 forContext:(id)a1 withError:(id *)a2;
+
+@end

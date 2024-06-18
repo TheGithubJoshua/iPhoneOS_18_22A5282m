@@ -1,0 +1,83 @@
+@class NSCache, VSTrialService, NSObject;
+@protocol OS_dispatch_queue;
+
+@interface VSMobileAssetsManager : NSObject
+
+@property (retain, nonatomic) NSObject<OS_dispatch_queue> *assetQueryQueue;
+@property (retain, nonatomic) NSCache *cachedMAVoiceSelections;
+@property (retain, nonatomic) NSCache *cachedMAVoiceResources;
+@property (retain, nonatomic) VSTrialService *trialService;
+
++ (BOOL)isVoiceAssetWellDefined:(id)a0;
++ (id)preinstallAssetsDirectory;
++ (id)queryForVoiceResourceAsset:(id)a0 returnTypes:(long long)a1;
++ (long long)typeFromBundleIdentifier:(id)a0;
++ (id)downloadOptionsWithBattery:(BOOL)a0;
++ (id)getLatestAssetFromArray:(id)a0;
++ (id)bundleIdentifierForVoiceType:(long long)a0;
++ (id)voiceResourceFromAsset:(id)a0;
++ (id)sharedManager;
++ (id)pickCorrectAssetFromLocalAssets:(id)a0;
++ (id)queryForLanguage:(id)a0 forType:(long long)a1 voiceName:(id)a2 gender:(long long)a3 footprint:(long long)a4 returnTypes:(long long)a5;
+
+- (void)cancelDownload:(id)a0 completion:(id /* block */)a1;
+- (id)preinstalledVoicesForLanguage:(id)a0 gender:(long long)a1 name:(id)a2;
+- (id)init;
+- (void)resetCache;
+- (BOOL)shouldDownloadTrialResource:(id)a0;
+- (void)removeTrialVoice:(id)a0 completion:(id /* block */)a1;
+- (void)downloadVoiceResourceCatalogWithCompletion:(id /* block */)a0;
+- (id)voiceAssetsForSubscription:(id)a0;
+- (id)_trialVoiceWithLanguage:(id)a0 name:(id)a1 type:(long long)a2 footprint:(long long)a3;
+- (id)preinstallAssetsMetadata;
+- (id)selectVoiceForLang:(id)a0 name:(id)a1 type:(long long)a2 gender:(long long)a3 footprint:(long long)a4;
+- (void)migrateAssetIfNeededWithAssetType:(id)a0;
+- (void)downloadVoiceResource:(id)a0 completion:(id /* block */)a1;
+- (id)cleanUnusedAssets;
+- (void)downloadVoiceAsset:(id)a0 options:(id)a1 progressUpdateHandler:(id /* block */)a2;
+- (id)installedAssetsForType:(long long)a0 voicename:(id)a1 language:(id)a2 gender:(long long)a3 footprint:(long long)a4;
+- (void)_purgeMobileAsset:(id)a0;
+- (id)voiceDataWithBundleIdentifier:(id)a0 attributes:(id)a1 voicePathCallback:(id /* block */)a2;
+- (id)preferredDownloadForVoice:(id)a0;
+- (void)downloadTrialVoiceResource:(id)a0 options:(id)a1 completion:(id /* block */)a2;
+- (void)cleanMobileAssetVoiceResourcesWithActiveLanguages:(id)a0;
+- (void)removeTrialVoiceResource:(id)a0 completion:(id /* block */)a1;
+- (id)installedVoiceResources;
+- (id)selectPreinstalledVoiceForLanguage:(id)a0 gender:(long long)a1 name:(id)a2;
+- (void)downloadVoiceResource:(id)a0 options:(id)a1 completion:(id /* block */)a2;
+- (id)selectVoiceResourceAssetForLanguage:(id)a0;
+- (BOOL)shouldDownloadTrialVoice:(id)a0;
+- (void)removeMobileAssetVoiceResource:(id)a0 completion:(id /* block */)a1;
+- (BOOL)migrateAssetsWithProgress:(id /* block */)a0;
+- (id)_getResults:(id)a0;
+- (id)_getVoiceAssetsForType:(long long)a0 voiceName:(id)a1 language:(id)a2 gender:(long long)a3 footprint:(long long)a4 returnTypes:(long long)a5;
+- (id)builtInVoices;
+- (void).cxx_destruct;
+- (id)_mobileAssetVoiceForLanguage:(id)a0 name:(id)a1 type:(long long)a2 gender:(long long)a3 footprint:(long long)a4;
+- (void)_downloadAsset:(id)a0 options:(id)a1 progress:(id /* block */)a2 completion:(id /* block */)a3;
+- (id)_trialVoiceResourceWithLanguage:(id)a0;
+- (id)voiceAssetFromPreinstallMetadata:(id)a0;
+- (id)activeVoiceAssets;
+- (void)cleanOldMobileAssetVoiceResources;
+- (void)downloadCatalog:(id)a0 options:(id)a1 completion:(id /* block */)a2;
+- (id)_builtInVoiceForLanguage:(id)a0;
+- (id)_mobileAssetVoiceResourceWithLanguage:(id)a0;
+- (id)_installedVoiceResourceAssetForLanguage:(id)a0;
+- (void)downloadVoiceAsset:(id)a0 useBattery:(BOOL)a1 progressUpdateHandler:(id /* block */)a2;
+- (void)_removeTrialVoices:(id)a0 completion:(id /* block */)a1;
+- (id)voiceDataFromAsset:(id)a0;
+- (id)installedTrialVoicesForType:(long long)a0 voiceName:(id)a1 language:(id)a2 footprint:(long long)a3;
+- (id)definedVoicesForLanguage:(id)a0 voiceName:(id)a1 type:(long long)a2 footprint:(long long)a3;
+- (id)downloadCatalog:(id)a0 options:(id)a1;
+- (void)resetResourcesCache;
+- (id)inactiveVoiceAssets;
+- (id)_localVoiceForLanguageAndNamePath:(id)a0;
+- (void)removeVoiceAsset:(id)a0 completion:(id /* block */)a1;
+- (id)purgeAsset:(id)a0;
+- (id)installedTrialVoiceResources;
+- (void)cancelDownloads:(id)a0 completion:(id /* block */)a1;
+- (id)candidateToDownloadForVoice:(id)a0;
+- (void)removeVoiceResource:(id)a0 completion:(id /* block */)a1;
+- (id)installedLocalVoices;
+
+@end

@@ -1,0 +1,77 @@
+@class NSString, NSData, MTLFunctionConstantValuesInternal, NSObject;
+@protocol OS_dispatch_queue, OS_dispatch_data;
+
+@interface _MTLFunctionInternal : _MTLFunction {
+    struct MTLFunctionData { unsigned long long bitCodeOffset; unsigned long long bitCodeFileSize; unsigned long long publicArgumentsOffset; unsigned long long privateArgumentsOffset; unsigned long long sourceArchiveOffset; unsigned short airMajorVersion; unsigned short airMinorVersion; unsigned short languageMajorVersion; unsigned short languageMinorVersion; struct { unsigned char key[32]; } bitcodeHash; unsigned char bitcodeType; NSData *pluginData; unsigned char renderTargetArrayIndexType; unsigned char patchType : 2; unsigned char controlPointCount : 6; NSObject<OS_dispatch_data> *functionInputs; } _functionData;
+    unsigned char _publicMetadataInitialized;
+    unsigned char _privateMetadataInitialized;
+    unsigned char _sourceArchiveMetadataInitialized;
+    unsigned char _stitchableFunctionMetadataInitialized;
+    void *_programObject;
+    NSString *_filePath;
+    long long _lineNumber;
+    NSObject<OS_dispatch_queue> *_functionQueue;
+    NSObject<OS_dispatch_data> *_specializationAirScript;
+    NSString *_baseLibraryFilePath;
+    struct { unsigned char key[32]; } _baseLibraryUUID;
+    MTLFunctionConstantValuesInternal *_baseFunctionConstantValues;
+}
+
+- (void)setPluginData:(id)a0;
+- (unsigned long long)bitCodeFileSize;
+- (id)importedSymbols;
+- (id)filePath;
+- (const struct { unsigned char x0[32]; } *)bitCodeHash;
+- (void)setRelocations:(id)a0;
+- (id)unpackedFilePath;
+- (id)newFunctionWithPluginData:(id)a0 bitcodeType:(unsigned char)a1;
+- (void)setArguments:(id)a0;
+- (id)stageInputAttributes;
+- (void)setVertexAttributes:(id)a0;
+- (id)arguments;
+- (id)baseLibraryFilePath;
+- (void)setFilePath:(id)a0;
+- (void)initializePublicMetadata;
+- (void)newSpecializedFunctionWithDescriptor:(id)a0 destinationArchive:(id)a1 functionCache:(id)a2 sync:(BOOL)a3 completionHandler:(id /* block */)a4;
+- (void)setStageInputAttributes:(id)a0;
+- (const struct MTLFunctionData { unsigned long long x0; unsigned long long x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned short x5; unsigned short x6; unsigned short x7; unsigned short x8; struct { unsigned char x0[32]; } x9; unsigned char x10; id x11; unsigned char x12; unsigned char x13 : 2; unsigned char x14 : 6; id x15; } *)functionData;
+- (id)functionInputs;
+- (void)setBitcodeType:(unsigned char)a0;
+- (void)initializeSourceArchive;
+- (id)precompiledOutput;
+- (unsigned long long)renderTargetArrayIndexType;
+- (long long)patchControlPointCount;
+- (void)initializeStitchableFunctionMetadata;
+- (void)setReturnType:(id)a0;
+- (unsigned long long)sourceArchiveOffset;
+- (unsigned char)bitcodeType;
+- (unsigned long long)bitCodeOffset;
+- (BOOL)needsFunctionConstantValues;
+- (void)setSourceArchiveOffset:(unsigned long long)a0;
+- (id)functionConstants;
+- (void)setOptions:(unsigned long long)a0;
+- (id).cxx_construct;
+- (void)setPrecompiledOutput:(id)a0;
+- (id)initWithName:(id)a0 type:(unsigned long long)a1 libraryData:(struct MTLLibraryData { void /* function */ **x0; struct { unsigned char x0[32]; } x1; _Atomic int x2; id x3; id x4; } *)a2 functionData:(struct MTLFunctionData { unsigned long long x0; unsigned long long x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned short x5; unsigned short x6; unsigned short x7; unsigned short x8; struct { unsigned char x0[32]; } x9; unsigned char x10; id x11; unsigned char x12; unsigned char x13 : 2; unsigned char x14 : 6; id x15; } *)a3 device:(id)a4;
+- (BOOL)specializedFunctionHash:(struct { unsigned char x0[32]; } *)a0 requestData:(id *)a1 constants:(id)a2 specializedName:(id)a3 privateFunctions:(id)a4 completionHandler:(id /* block */)a5;
+- (id)specializationAirScript;
+- (id)relocations;
+- (void *)programObject;
+- (id)pluginData;
+- (long long)lineNumber;
+- (void)dealloc;
+- (id)baseFunctionConstantValues;
+- (id)vertexAttributes;
+- (void)initializePrivateMetadata;
+- (id)importedLibraries;
+- (void)setLineNumber:(long long)a0;
+- (id)returnType;
+- (struct { unsigned char x0[32]; })baseLibraryUUID;
+- (id)functionConstantsDictionary;
+- (void)setFunctionConstantSpecializationHash:(const struct { unsigned char x0[32]; } *)a0;
+- (unsigned long long)patchType;
+- (void)setFunctionConstants:(id)a0;
+- (id)newSpecializedFunctionWithDescriptor:(id)a0 destinationArchive:(id)a1 functionCache:(id)a2 error:(id *)a3;
+- (void)setUnpackedFilePath:(id)a0;
+
+@end

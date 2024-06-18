@@ -1,0 +1,14 @@
+@interface CNContainerAccountIdentifierDescription : CNContainerPropertyDescription
+
+- (Class)valueClass;
+- (void *)ABValueFromCNValue:(id)a0;
+- (id)key;
+- (id)CNValueFromABValue:(void *)a0;
+- (BOOL)isWritable;
+- (void *)ABValueForABSource:(void *)a0;
+- (id)CNValueForContainer:(id)a0;
+- (int)abPropertyID;
+- (BOOL)setABValue:(void *)a0 onABSource:(void *)a1 error:(struct __CFError **)a2;
+- (void)setCNValue:(id)a0 onContainer:(id)a1;
+
+@end

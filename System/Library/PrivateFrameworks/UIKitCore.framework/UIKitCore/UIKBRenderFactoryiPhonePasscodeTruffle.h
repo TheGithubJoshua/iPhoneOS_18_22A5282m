@@ -1,0 +1,12 @@
+@interface UIKBRenderFactoryiPhonePasscodeTruffle : UIKBRenderFactoryiPhonePasscode
+
+- (struct CGPoint { double x0; double x1; })variantSymbolTextOffset;
+- (double)popupFontSize;
+- (BOOL)isTallPopup;
+- (id)lightKeycapsFontName;
+- (struct CGPoint { double x0; double x1; })popupSymbolTextOffset;
+- (struct UIEdgeInsets { double x0; double x1; double x2; double x3; })variantPaddedFrameInsets;
+- (struct UIEdgeInsets { double x0; double x1; double x2; double x3; })variantSymbolFrameInsets;
+- (struct UIEdgeInsets { double x0; double x1; double x2; double x3; })wideShadowPaddleInsets;
+
+@end

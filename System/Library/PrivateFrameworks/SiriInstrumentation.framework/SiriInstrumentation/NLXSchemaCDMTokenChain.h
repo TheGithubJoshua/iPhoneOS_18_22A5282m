@@ -1,0 +1,27 @@
+@class NSArray, NSData, SISchemaUUID;
+
+@interface NLXSchemaCDMTokenChain : SISchemaInstrumentationMessage
+
+@property (copy, nonatomic) NSArray *tokens;
+@property (retain, nonatomic) SISchemaUUID *asrHypothesisId;
+@property (nonatomic) BOOL hasAsrHypothesisId;
+@property (readonly, nonatomic) NSData *jsonData;
+
+- (id)initWithDictionary:(id)a0;
+- (id)dictionaryRepresentation;
+- (id)initWithJSON:(id)a0;
+- (unsigned long long)hash;
+- (void)writeTo:(id)a0;
+- (void).cxx_destruct;
+- (BOOL)isEqual:(id)a0;
+- (BOOL)readFrom:(id)a0;
+- (id)applySensitiveConditionsPolicy:(id)a0;
+- (id)suppressMessageUnderConditions;
+- (id)tokensAtIndex:(unsigned long long)a0;
+- (void)addTokens:(id)a0;
+- (void)clearTokens;
+- (void)deleteAsrHypothesisId;
+- (void)deleteTokens;
+- (unsigned long long)tokensCount;
+
+@end

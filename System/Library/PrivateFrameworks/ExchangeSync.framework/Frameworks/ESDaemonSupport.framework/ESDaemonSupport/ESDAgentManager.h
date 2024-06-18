@@ -1,0 +1,86 @@
+@class NSArray, NSMutableDictionary, NSMutableArray, NSObject;
+@protocol OS_dispatch_queue;
+
+@interface ESDAgentManager : NSObject {
+    NSArray *_activeAgents;
+    NSObject<OS_dispatch_queue> *_activeAgentsQueue;
+    NSMutableDictionary *_watchedIDs;
+    unsigned int _pmNotifier;
+    struct IONotificationPort { } *_pmPort;
+    struct __CFRunLoopSource { } *_pmRunLoopSource;
+    id /* block */ _startAgentsWhenSystemReadyBlock;
+    NSObject<OS_dispatch_queue> *_CTCellularUsagePolicyNotificationQ;
+    struct __CTServerConnection { } *_ctServerConnection;
+    int _pendingAccountSetupCount;
+}
+
+@property (retain, nonatomic) NSMutableArray *subCalHandlers;
+@property (nonatomic) unsigned long long nextDisableMonitoringAgentsToken;
+@property (readonly, nonatomic) NSMutableDictionary *disableMonitoringAgentsTokens;
+@property (readonly, nonatomic) NSArray *activeAgents;
+
++ (id)sharedManager;
+
+- (id)stateString;
+- (id)accountWithAccountID:(id)a0 andClassName:(id)a1;
+- (id)init;
+- (void)enableActiveSync;
+- (BOOL)setFolderIdsThatExternalClientsCareAboutAdded:(id)a0 deleted:(id)a1 foldersTag:(id)a2 forAccountID:(id)a3;
+- (void)requestPolicyUpdateForAccount:(id)a0;
+- (void)_addAccountAggdEntries;
+- (BOOL)resumeMonitoringAccountID:(id)a0 folderIDs:(id)a1;
+- (id)agentWithAccountID:(id)a0;
+- (BOOL)addPersistMonitoringAccountID:(id)a0 folderIDs:(id)a1 clientID:(id)a2;
+- (BOOL)updateFolderListForAccountID:(id)a0 andDataclasses:(long long)a1 requireChangedFolders:(BOOL)a2 isUserRequested:(BOOL)a3;
+- (BOOL)resetCertWarningsForAccountWithId:(id)a0 andDataclasses:(long long)a1;
+- (id)accountsProviderWithDBHelper:(id)a0;
+- (id)_configFileForAgent:(id)a0;
+- (void)enableDaemon;
+- (BOOL)clearPersistMonitoringAccountID:(id)a0 clientID:(id)a1;
+- (void)cleanupLaunchdSemaphore;
+- (BOOL)removePersistMonitoringAccountID:(id)a0 folderIDs:(id)a1 clientID:(id)a2;
+- (void)loadAgents;
+- (void)removePendingAccountSetup;
+- (BOOL)hasPendingAccountSetup;
+- (void)_deviceWillSleep;
+- (id)currentPolicyKeyForAccount:(id)a0;
+- (id)changeHistoryClerkWithDBHelper:(id)a0;
+- (BOOL)_clearOrphanedStoresInCalendarDatabase:(struct CalDatabase { struct __CFRuntimeBase { unsigned long long x0; _Atomic unsigned long long x1; } x0; int x1; struct CPRecordStore *x2; struct CalEventOccurrenceCache *x3; struct CalScheduledTaskCache *x4; struct __CFDictionary *x5; struct __CFDictionary *x6; struct os_unfair_lock_s { unsigned int x0; } x7; unsigned int x8; unsigned int x9; struct __CFArray *x10; struct __CFString *x11; struct __CFArray *x12; int x13; int x14; struct __CFString *x15; struct __CFURL *x16; struct __CFString *x17; struct __CFString *x18; unsigned long long x19; int x20; int x21; int x22; id /* block */ x23; struct _opaque_pthread_mutex_t { long long x0; char x1[56]; } x24; BOOL x25; struct __CFArray *x26; struct __CFArray *x27; struct __CFArray *x28; struct __CFArray *x29; id x30; BOOL x31; BOOL x32; struct __CFSet *x33; id x34; id x35; id x36; int x37; id x38; id x39; id x40; char *x41; unsigned int x42; unsigned int x43; int x44; BOOL x45; BOOL x46; BOOL x47; BOOL x48; BOOL x49; BOOL x50; } *)a0 eventAccountIds:(id)a1 toDoAccountIds:(id)a2;
+- (void)enableMonitoringAgentsWithToken:(unsigned long long)a0;
+- (BOOL)_systemMayNowBeReady;
+- (id)activeAccountBundleIDs;
+- (void).cxx_destruct;
+- (void)_stopMonitoringAndSaveAgents;
+- (void)_loadAndStartExchangeMonitoringAgents;
+- (BOOL)hasEASAccountConfigured;
+- (void)reportFolderItemsSyncSuccess:(BOOL)a0 forFolderWithID:(id)a1 withItemsCount:(unsigned long long)a2 andAccountWithID:(id)a3;
+- (void)saveAndReleaseAgents;
+- (void)_registerForCTDataUsageNotificaiton;
+- (BOOL)startMonitoringAccountID:(id)a0 folderIDs:(id)a1;
+- (void)registerForBuddy;
+- (id)_accountInfoPath;
+- (void)addPendingAccountSetup;
+- (void)_clearOrphanedStores;
+- (void)handleURLString:(id)a0;
+- (id)_phoneVersion;
+- (void)disableActiveSync;
+- (BOOL)updateContentsOfAllFoldersForAccountID:(id)a0 andDataclasses:(long long)a1 isUserRequested:(BOOL)a2;
+- (void)getStatusReportDictsWithCompletionBlock:(id /* block */)a0;
+- (BOOL)processFolderChange:(id)a0 forAccountWithID:(id)a1 completionBlock:(id /* block */)a2;
+- (unsigned long long)disableMonitoringAgents;
+- (BOOL)stopMonitoringAccountID:(id)a0 folderIDs:(id)a1;
+- (void)loadExchangeAgents;
+- (void)dealloc;
+- (void)processMeetingRequestDatas:(id)a0 deliveryIdsToClear:(id)a1 deliveryIdsToSoftClear:(id)a2 inFolderWithId:(id)a3 forAccountWithId:(id)a4 callback:(id /* block */)a5;
+- (BOOL)hasActiveAccounts;
+- (BOOL)updateContentsOfFolders:(id)a0 forAccountID:(id)a1 andDataclasses:(long long)a2 isUserRequested:(BOOL)a3;
+- (void)disableDaemon;
+- (id)accountWithAccountID:(id)a0;
+- (void)_calDaysToSyncDidChange;
+- (void)_handleCellularDataUsageChangedNotification;
+- (BOOL)suspendMonitoringAccountID:(id)a0 folderIDs:(id)a1;
+- (BOOL)_hasDataclassWeCareAbout:(id)a0;
+- (void)_deviceDidWake;
+- (void)_resetMonitoringRequestsAndLoadAgents;
+
+@end

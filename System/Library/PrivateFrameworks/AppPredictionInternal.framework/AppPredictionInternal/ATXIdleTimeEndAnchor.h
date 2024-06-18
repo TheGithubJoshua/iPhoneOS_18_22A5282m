@@ -1,0 +1,20 @@
+@interface ATXIdleTimeEndAnchor : ATXAnchor
+
++ (id)sampleEvent;
++ (id)fetchAnchorOccurrencesBetweenStartDate:(id)a0 endDate:(id)a1;
++ (id)keyPathForContextStore;
++ (BOOL)shouldProcessContextStoreNotification;
++ (id)invalidationPredicateForContextStoreRegistration;
++ (void)registerForNotificationsWithoutUsingContextStoreForObserver:(id)a0 enterSelector:(SEL)a1 exitSelector:(SEL)a2;
++ (double)minimumSecondsForBeingIdle;
++ (id)longDescription;
++ (Class)supportedDuetDataProviderClass;
++ (BOOL)usesContextStoreForRealTimeNotifications;
++ (id)predicateForContextStoreRegistration;
++ (long long)anchorType;
++ (BOOL)shouldPredicateOnStartDate;
++ (id)duetEventsPredicates;
++ (double)secondsOfInfluence;
++ (BOOL)isActive;
+
+@end

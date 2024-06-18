@@ -1,0 +1,94 @@
+@class UIColor, UIVisualEffect, NSString, NSMutableDictionary, EKCurrentTimeMarkerView, NSMutableArray, UIView;
+@protocol EKDayTimeViewDelegate;
+
+@interface EKDayTimeView : UIView <EKCurrentTimeMarkerViewUpdating, EKUITintColorUpdateDelegate> {
+    NSMutableArray *_contentViews;
+    NSMutableDictionary *_visualEffectViews;
+    unsigned char _leftBorder : 1;
+    unsigned char _rightBorder : 1;
+    double _highlightedHour;
+    long long _orientation;
+    long long _targetSizeClass;
+    EKCurrentTimeMarkerView *_timeMarker;
+    UIView *_timeMarkerExtension;
+    double _timeWidth;
+}
+
+@property (nonatomic) BOOL showsLeftBorder;
+@property (nonatomic) BOOL showsRightBorder;
+@property (nonatomic) BOOL showsTimeMarker;
+@property (nonatomic) BOOL showsTimeMarkerExtension;
+@property (nonatomic) BOOL usesLightText;
+@property (nonatomic) double highlightedHour;
+@property (nonatomic) double hoursToPad;
+@property (retain, nonatomic) UIColor *timeColor;
+@property (readonly, nonatomic) EKCurrentTimeMarkerView *timeMarker;
+@property (retain, nonatomic) UIVisualEffect *visualEffect;
+@property (nonatomic) struct _NSRange { unsigned long long location; unsigned long long length; } hoursToRender;
+@property (nonatomic) double hourHeightScale;
+@property (readonly, nonatomic) double hourHeight;
+@property (readonly, nonatomic) double defaultHeight;
+@property (weak, nonatomic) id<EKDayTimeViewDelegate> delegate;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *debugDescription;
+
++ (double)_dynamicFontSizeForOrientation:(long long)a0;
++ (void)_invalidateCachedValues;
++ (double)_noonLocalizedWidthForOrientation:(long long)a0;
++ (id)_boldFontForOrientation:(long long)a0;
++ (double)hourWidthForSizeClass:(long long)a0 orientation:(long long)a1;
++ (void)_calculateWidthForSizeClass:(long long)a0 orientation:(long long)a1 excludeCurrentTime:(BOOL)a2;
++ (id)unscaledAllDayLabelFont;
++ (double)verticalPadding;
++ (double)_widthForOrientation:(long long)a0 sizeClass:(long long)a1 excludeCurrentTime:(BOOL)a2;
++ (double)heightOfHourTextForHour:(long long)a0 orientation:(long long)a1;
++ (double)_timeVerticalInsetForOrientation:(long long)a0 inViewHierarchy:(id)a1;
++ (id)_noonLocalizedString;
++ (double)defaultHourScale;
++ (double)_hourFontSize;
++ (void)_setWidth:(double)a0 forOrientation:(long long)a1 sizeClass:(long long)a2 excludeCurrentTime:(BOOL)a3;
++ (id)allDayLabelFont;
++ (double)defaultHeightForSizeClass:(long long)a0 orientation:(long long)a1;
++ (double)defaultHeightForSizeClass:(long long)a0 orientation:(long long)a1 withHourScale:(double)a2;
++ (void)setVerticalPadding:(double)a0;
++ (double)_timeTextWidthForSizeClass:(long long)a0 orientation:(long long)a1;
++ (void)_invalidateWidth;
++ (id)_normalFontForOrientation:(long long)a0;
++ (id)_hourFontForOrientation:(long long)a0;
++ (double)timeInsetForSizeClass:(long long)a0 orientation:(long long)a1;
++ (id)allDayLabelBoldFont;
++ (double)timeWidthForOrientation:(long long)a0 inViewHierarchy:(id)a1;
++ (void)_registerForInvalidation;
++ (double)hourHeightForSizeClass:(long long)a0 orientation:(long long)a1;
+
+- (double)_positionOfSecond:(int)a0;
+- (void)_invalidateTimeWidth;
+- (void)setSemanticContentAttribute:(long long)a0;
+- (void)setFrame:(struct CGRect { struct CGPoint { double x0; double x1; } x0; struct CGSize { double x0; double x1; } x1; })a0;
+- (void)setNeedsDisplay;
+- (void)setOrientation:(long long)a0;
+- (void)_localeChanged;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x0; double x1; } x0; struct CGSize { double x0; double x1; } x1; })a0;
+- (void)viewTintColorDidChangeForView:(id)a0 toColor:(id)a1;
+- (struct CGSize { double x0; double x1; })sizeThatFits:(struct CGSize { double x0; double x1; })a0;
+- (void).cxx_destruct;
+- (long long)_sizeClass;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x0; double x1; } x0; struct CGSize { double x0; double x1; } x1; })a0 sizeClass:(long long)a1;
+- (void)didMoveToWindow;
+- (void)setOpaque:(BOOL)a0;
+- (void)_sizeClassChanged;
+- (double)_timeWidth;
+- (void)dealloc;
+- (void)drawRect:(struct CGRect { struct CGPoint { double x0; double x1; } x0; struct CGSize { double x0; double x1; } x1; })a0 forContentView:(id)a1 withHourRange:(struct _NSRange { unsigned long long x0; unsigned long long x1; })a2;
+- (double)scaledHourHeight;
+- (void)layoutSubviews;
+- (double)topPadding;
+- (void)updateHourHeight;
+- (void)updateMarkerPosition;
+- (void)tintColorDidChange;
+- (void)layoutFrames;
+- (void)_fontSizeChanged;
+
+@end

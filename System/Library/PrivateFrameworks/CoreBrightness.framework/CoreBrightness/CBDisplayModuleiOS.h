@@ -1,0 +1,88 @@
+@class CBSBIM, NSString, CBAurora, NSMutableDictionary, CBFrameStats, NSObject, NSMutableArray, CBEDR;
+@protocol OS_dispatch_source, CBBrightnessProxy;
+
+@interface CBDisplayModuleiOS : CBDisplayModule <CBAODProtocol> {
+    float _trustedLux;
+    id<CBBrightnessProxy> _brtCtl;
+    CBAurora *_aurora;
+    float _minNits;
+    float _midNits;
+    float _maxNits;
+    float _maxNitsEDR;
+    float _maxNitsPanel;
+    float _nitsSDR;
+    float _dynSliderCap;
+    float _currentCapToCA;
+    BOOL _capToCAIsRamping;
+    BOOL _blrEnabled;
+    BOOL _harmonyEnabled;
+    CBEDR *_edr;
+    CBSBIM *_sbim;
+    float _appliedHeadroom;
+    float _requestedHeadroom;
+    BOOL _useReferenceHeadroom;
+    id _lastEDRHeadroomRequestFromCA;
+    unsigned long long _edrState;
+    BOOL _brightnessControlEnabled;
+    float _appliedComp;
+    BOOL _ecoMode;
+    BOOL _displayRequiresBDM;
+    float _bdmLux1;
+    float _bdmLux2;
+    NSObject<OS_dispatch_source> *_apceTimer;
+    BOOL _rtplcSupported;
+    BOOL _rtplcCapApplied;
+    float _currentRTPLCTarget;
+    float _nitsAtRTPLCRampStart;
+    float _rtplcCap;
+    unsigned long long _rtplcState;
+    struct recoverycurve_t { float *panelNits; float *apce; unsigned long long size; } _hdrRTPLCRecoveryCurve;
+    unsigned long long _transactionID;
+    NSMutableDictionary *_pendingCommitedTransactions;
+    CBFrameStats *_frameStats;
+    NSMutableArray *_cachedProperties;
+    NSMutableArray *_cachedKeys;
+}
+
+@property (readonly) struct __Display { } *displayInternal;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *debugDescription;
+
+- (id)copyPropertyForKey:(id)a0;
+- (void)handleNotificationForKey:(id)a0 withProperty:(id)a1;
+- (float)computeTargetHDRBrightnessForAPCE:(float)a0 andScale:(float)a1;
+- (id)copyPropertyInternalForKey:(id)a0;
+- (const char *)edrStateToString:(unsigned long long)a0;
+- (void)handleEDRHeadroomRequest:(id)a0;
+- (void)stop;
+- (BOOL)setProperty:(id)a0 forKey:(id)a1;
+- (id)className;
+- (void)updatePresetState:(BOOL)a0;
+- (BOOL)handleAODStateUpdate:(unsigned long long)a0 transitionTime:(float)a1 context:(id)a2;
+- (BOOL)edrIsEngaged;
+- (void)start;
+- (BOOL)luxHasCrossedBDMThreshold:(float)a0;
+- (void)initialiseAurora;
+- (id)copyPropertyForKey:(id)a0 withParameter:(id)a1;
+- (id)initWithBacklight:(unsigned int)a0 queue:(id)a1 display:(id)a2;
+- (float)computeBrightnessCompensation;
+- (id)copyIdentifiers;
+- (void)sendNotificationForKey:(id)a0 withValue:(id)a1;
+- (void)createAPCEMonitorWithFrequency:(float)a0;
+- (void)handleFrameInfo:(struct { unsigned int x0; unsigned int x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; unsigned int x6; BOOL x7; BOOL x8; BOOL x9; float x10; float x11; float x12; unsigned long long x13; })a0;
+- (void)initialiseSDR;
+- (void)updateEDRStateForEvent:(unsigned long long)a0 andHeadroom:(float)a1;
+- (void)handleDisplayBrightnessUpdate:(id)a0;
+- (void)dealloc;
+- (void)handleAttachedNotification;
+- (id)initWithBacklight:(unsigned int)a0 queue:(id)a1 brtCtl:(id)a2;
+- (void)apceTimerCallback:(id)a0;
+- (void)deleteAPCEMonitor;
+- (const char *)rtplcStateToString:(unsigned long long)a0;
+- (BOOL)shouldForceCapRamp;
+- (void)updateSDRLimits:(id)a0;
+- (void)initialiseEDR;
+
+@end

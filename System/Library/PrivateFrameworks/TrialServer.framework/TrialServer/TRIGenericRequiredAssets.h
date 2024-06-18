@@ -1,0 +1,21 @@
+@class NSArray;
+
+@interface TRIGenericRequiredAssets : NSObject <NSCopying>
+
+@property (readonly, nonatomic) NSArray *cloudKit;
+@property (readonly, nonatomic) NSArray *mobileAsset;
+
++ (id)assetsWithCloudKit:(id)a0 mobileAsset:(id)a1;
+
+- (id)init;
+- (BOOL)isEqualToAssets:(id)a0;
+- (unsigned long long)hash;
+- (void).cxx_destruct;
+- (BOOL)isEqual:(id)a0;
+- (id)description;
+- (id)copyWithReplacementCloudKit:(id)a0;
+- (id)copyWithZone:(struct _NSZone { } *)a0;
+- (id)copyWithReplacementMobileAsset:(id)a0;
+- (id)initWithCloudKit:(id)a0 mobileAsset:(id)a1;
+
+@end

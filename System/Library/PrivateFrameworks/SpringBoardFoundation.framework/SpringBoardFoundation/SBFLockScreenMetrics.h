@@ -1,0 +1,52 @@
+@interface SBFLockScreenMetrics : NSObject
+
++ (double)pinLongNumericEntryFieldBottomYDistanceFromNumberPadTopButton;
++ (double)pinNumberPadButtonPaddingHeight;
++ (double)_notificationListSideOffset;
++ (id)pinKeypadStatusSubtitleViewTitleFont;
++ (id)pinKeypadStatusTitleViewTitleFont;
++ (double)dateViewBaselineY;
++ (double)pinNumberPadBaseOffsetFromTopOfScreen:(BOOL)a0;
++ (double)scaledFontSize:(double)a0 withMaximumFontSizeCategory:(id)a1;
++ (double)pinNumberPadBottomPaddingHeight;
++ (struct UIEdgeInsets { double x0; double x1; double x2; double x3; })notificationListInsets;
++ (struct CGSize { double x0; double x1; })systemApertureProudLockAssetSize;
++ (double)logoutLabelFontSize;
++ (double)subtitleBaselineOffsetFromTopOfScreen;
++ (double)slideToUnlockOverlayMargin;
++ (struct UIEdgeInsets { double x0; double x1; double x2; double x3; })deviceInformationInsets;
++ (double)slideUpGrabberInset;
++ (double)pinAlphanumericEntryFieldBottomYDistanceFromKeyboard;
++ (double)pinKeyboardEntryFieldOffset:(BOOL)a0;
++ (double)_notificationListTopPadding;
++ (double)pinKeypadStatusTitleBaselineOffsetFromEntryFieldIncludingSubtitle;
++ (double)pinKeypadStatusSubtitleTitleExtraOffset;
++ (double)pinFixedDigitEntryFieldBottomYDistanceFromNumberPadTopButton:(BOOL)a0;
++ (double)proudLockOffsetFromTopOfScreen;
++ (double)slideToUnlockFontSize;
++ (double)pinNumberPadWidth;
++ (double)dateBaselineOffsetFromTime;
++ (double)proudLockScaleFactor;
++ (struct CGSize { double x0; double x1; })proudLockAssetSize;
++ (double)pinFixedDigitEntryFieldIndicatorDiameter;
++ (double)pinKeypadStatusTitleExtraOffsetIncludingSubtitle;
++ (double)pinNumberPadButtonOuterCircleDiameter;
++ (double)deviceInformationParagraphSpacing;
++ (double)deviceInformationLabelFontSize;
++ (double)pinFixedDigitEntryFieldIndicatorStrokeSize;
++ (double)pinNumberPadAncillaryButtonOffset;
++ (double)_subTitleHeight;
++ (double)pinKeypadEntryFieldOffsetForSubtitle;
++ (double)pinNumberPadButtonPaddingWidth;
++ (struct UIEdgeInsets { double x0; double x1; double x2; double x3; })logoutInsets;
++ (double)pinKeypadStatusTitleBaselineOffsetFromTitle;
++ (double)dateViewSideMargin;
++ (double)_notificationListBottomOffset;
++ (double)pinKeypadStatusTitleBaselineOffsetFromEntryField;
++ (double)deviceInformationLabelFontLeading;
++ (struct UIEdgeInsets { double x0; double x1; double x2; double x3; })slideToUnlockInsets;
++ (double)dateLabelFontSize;
++ (double)proudLockCenterFromTopOfScreen;
++ (double)pinFixedDigitEntryFieldIndicatorPaddingWidth;
+
+@end

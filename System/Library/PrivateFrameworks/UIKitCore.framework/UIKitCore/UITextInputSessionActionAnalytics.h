@@ -1,0 +1,94 @@
+@class NSUUID, NSSet, NSMutableOrderedSet, NSMutableSet, NSObject;
+@protocol UITextInputSessionActionAnalyticsDelegateSource, OS_dispatch_queue;
+
+@interface UITextInputSessionActionAnalytics : NSObject {
+    NSObject<OS_dispatch_queue> *_queue;
+    NSMutableOrderedSet *_recentActions;
+    NSMutableSet *_accumulators;
+    NSMutableSet *_efficacyAccumulators;
+    NSMutableSet *_dynamicAccumulators;
+    NSSet *_separateCycleAccumulatorNames;
+    unsigned long long _maxDepth;
+    BOOL _trackingDuration;
+    unsigned long long _beginTimestamp;
+}
+
+@property (weak, nonatomic) id<UITextInputSessionActionAnalyticsDelegateSource> delegateSource;
+@property (copy, nonatomic) NSUUID *sessionIdentifier;
+@property (readonly, nonatomic) unsigned long long allowCursorMovementCounter;
+
++ (void)removeObserver:(id)a0;
++ (id)sharedPunctuationCharacterSet;
++ (void)q_notifyEndingObserversWithSessionAnalytics:(id)a0;
++ (void)q_notifyStartingObservers;
++ (void)addEndingObserver:(id)a0;
++ (void)populateActionInputMode:(id)a0;
++ (void)removeEndingObserver:(id)a0;
++ (void)populateActionInputMode:(id)a0 withLanguage:(id)a1;
++ (void)addObserver:(id)a0;
++ (id)stringValueForSource:(long long)a0;
++ (id)allowedValuesForTextInputSource;
+
+- (id)allAccumulatorNames;
+- (void)enumerateAnalytics:(id /* block */)a0;
+- (id)init;
+- (void)didDeleteKeyPressWithInputSource:(long long)a0;
+- (void)q_updateAnalyticsFromAccumulators;
+- (void)didInsertText:(id)a0 relativeRangeBefore:(struct _NSRange { unsigned long long x0; unsigned long long x1; })a1 withLanguage:(id)a2;
+- (void)_didInsertTextAction:(id)a0 numCharsDeleted:(unsigned long long)a1 withLanguage:(id)a2;
+- (void)q_flushRecentActions;
+- (void)didInsertText:(id)a0 relativeRangeBefore:(struct _NSRange { unsigned long long x0; unsigned long long x1; })a1 selectedTextBefore:(id)a2 withLanguage:(id)a3;
+- (void)didUndo;
+- (void)enumerateSeparateCycleAnalytics:(id /* block */)a0;
+- (void)q_addActionAndUpdate:(id)a0;
+- (void)didDictationBegin:(BOOL)a0 usesMultiModalDictation:(BOOL)a1;
+- (void)_didDeleteBackwardAction:(id)a0;
+- (void)didDictationItemButtonPress:(unsigned long long)a0;
+- (void)q_addEfficacyAccumulator:(id)a0;
+- (void)didInsertText:(id)a0 relativeRangeBefore:(struct _NSRange { unsigned long long x0; unsigned long long x1; })a1;
+- (void)didCalloutBarReplacementForText:(id)a0 withText:(id)a1;
+- (void)didPaste;
+- (void)q_setSeparateCycleAccumulatorNames:(id)a0;
+- (void)addAccumulator:(id)a0;
+- (id)_instanceOfActionClass:(Class)a0;
+- (void)q_addDynamicAccumulator:(id)a0;
+- (void)_didDeleteBackwardText:(id)a0 shouldOverrideInputActionCountToZero:(BOOL)a1 withLanguage:(id)a2;
+- (void)_didDeleteBackwardCount:(unsigned long long)a0 shouldOverrideInputActionCountToZero:(BOOL)a1 withLanguage:(id)a2;
+- (void)enumerateEfficacyAnalytics:(id /* block */)a0;
+- (void)q_setupDefaultAnalytics;
+- (void).cxx_destruct;
+- (void)didInsertText:(id)a0 relativeRangeBefore:(struct _NSRange { unsigned long long x0; unsigned long long x1; })a1 withNumAlternatives:(long long)a2;
+- (void)addDynamicAccumulator:(id)a0;
+- (void)didSessionEnd;
+- (void)enumerateTextInputActionAnalytics:(id /* block */)a0;
+- (void)didRedo;
+- (void)didCandidateBarReplacementForText:(id)a0 withText:(id)a1;
+- (void)didChangeToSelection:(struct _NSRange { unsigned long long x0; unsigned long long x1; })a0 relativeRangeBefore:(struct _NSRange { unsigned long long x0; unsigned long long x1; })a1;
+- (void)beginTrackingSessionDurationIfNecessary;
+- (unsigned long long)_normalizedTextLength:(id)a0;
+- (void)didDeleteBackwardCount:(unsigned long long)a0;
+- (void)didReplaceWithCandidate:(long long)a0;
+- (void)didDictationEnd;
+- (void)didCopy;
+- (void)didReplacementForText:(id)a0 withText:(id)a1 withSource:(long long)a2 withType:(long long)a3;
+- (unsigned long long)_emojiCountForText:(id)a0;
+- (void)addEfficacyAccumulator:(id)a0;
+- (void)didInsertKeyPressWithInputSource:(long long)a0;
+- (void)didCut;
+- (void)decrementAllowCursorMovementCount;
+- (void)didOther;
+- (unsigned long long)_punctuationCountForText:(id)a0;
+- (void)q_addAccumulator:(id)a0;
+- (id)q_copyAccumulatorWithName:(id)a0;
+- (void)didAutocorrectReplacementForText:(id)a0 withText:(id)a1;
+- (void)didDeleteBackwardText:(id)a0;
+- (void)didKeyPress:(id)a0;
+- (id)getDynamicAccumulatorWithName:(id)a0;
+- (void)writeAnalytics;
+- (unsigned long long)_optionsForText:(id)a0;
+- (void)incrementAllowCursorMovementCount;
+- (id)allEfficacyAccumulatorNames;
+- (void)didBegin;
+- (id)_textInsertionActionForText:(id)a0 relativeRangeBefore:(struct _NSRange { unsigned long long x0; unsigned long long x1; })a1 withLanguage:(id)a2;
+
+@end

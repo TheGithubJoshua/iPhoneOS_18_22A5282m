@@ -1,0 +1,80 @@
+@class NSUUID, NCNotificationSummaryPlatterContainingView, NCNotificationSummaryOrderProvider, PLSwipeInteraction, NSString;
+
+@interface NCNotificationSummarizedSectionList : NCNotificationCombinedSectionList <NCNotificationListCoalescingControlsHandlerDelegate, NCNotificationSummaryOrderProviderDelegate, PLSwipeInteractionDelegate> {
+    BOOL _adjustsFontForContentSizeCategory;
+}
+
+@property (retain, nonatomic) NCNotificationSummaryPlatterContainingView *summaryPlatterContainingView;
+@property (nonatomic) BOOL shouldAdjustIndex;
+@property (retain, nonatomic) PLSwipeInteraction *summaryPlatterViewSwipeInteraction;
+@property (nonatomic, getter=isPerformingClearAll) BOOL performingClearAll;
+@property (nonatomic, getter=isHorizontallyDisplaced) BOOL horizontallyDisplaced;
+@property (readonly, copy, nonatomic) NSUUID *atxUUID;
+@property (retain, nonatomic) NCNotificationSummaryOrderProvider *summaryOrderProvider;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *debugDescription;
+
+- (BOOL)_shouldHideNotificationGroupList:(id)a0;
+- (unsigned long long)notificationListViewNumberOfItems:(id)a0;
+- (unsigned long long)notificationCountForSummaryOrderProvider:(id)a0;
+- (void)notificationSummaryOrderProvider:(id)a0 didUpdateOrderedNotificationGroupLists:(id)a1;
+- (id)_notificationGroupsForDigestRankOrdering;
+- (void)_setupSwipeClipping;
+- (void)_collapseSection;
+- (double)buttonsCornerRadiusForSwipeInteraction:(id)a0;
+- (void)_expandSection;
+- (id)_newSectionHeaderView;
+- (void)_configureSectionListView:(id)a0;
+- (id)materialGroupNameBaseForNotificationSummaryOrderProvider:(id)a0;
+- (BOOL)_shouldPerformSwipeClipping;
+- (void)_updateSectionForRankOrderedIfNecessaryAndReloadDigest:(BOOL)a0;
+- (void)_insertViewToListAtIndex:(unsigned long long)a0 animated:(BOOL)a1;
+- (void)_reloadGroupListLeadingNotificationRequests;
+- (void)collapseSummarizedSectionList;
+- (void)_showSummaryPlatterView;
+- (void)mergeNotificationGroups:(id)a0 reorderGroupNotifications:(BOOL)a1;
+- (void)swipeInteractionDidSignificantUserInteraction:(id)a0;
+- (id)swipeInteraction:(id)a0 actionsToRevealFromLayoutLocation:(unsigned long long)a1;
+- (BOOL)notificationGroupListShouldReloadNotificationCells:(id)a0;
+- (BOOL)shouldContinuePresentingActionButtonsForSwipeInteraction:(id)a0;
+- (void)_configureSummaryPlatterViewSwipeInteractionIfNecessary;
+- (double)notificationListView:(id)a0 heightForItemAtIndex:(unsigned long long)a1 withWidth:(double)a2;
+- (void)_removeViewFromListAtIndex:(unsigned long long)a0 animated:(BOOL)a1;
+- (void)_hideSummaryPlatterView;
+- (void)swipeInteractionDidBeginRevealingActions:(id)a0;
+- (BOOL)_shouldHideNotificationRequest:(id)a0;
+- (id)viewToMoveForSwipeInteraction:(id)a0;
+- (void)swipeInteractionDidBeginHidingActions:(id)a0;
+- (void)_prepareForExpand;
+- (void)swipeInteraction:(id)a0 didMoveToNewXPosition:(double)a1;
+- (void)_resetSwipeClipping;
+- (void)notificationSummaryOrderProvider:(id)a0 requestsPerformingDefaultActionForNotificationRequest:(id)a1 inGroupList:(id)a2;
+- (void)_configureSwipeClippingIfNecessary;
+- (id)_clearAction;
+- (void)notificationListComponent:(id)a0 didRemoveNotificationRequest:(id)a1;
+- (void)setDeviceAuthenticated:(BOOL)a0;
+- (void)_didPerformSignificantUserInteraction;
+- (void)sectionHeaderViewDidRequestCollapsing:(id)a0;
+- (id)comparisonDate;
+- (double)footerViewHeightForNotificationList:(id)a0 withWidth:(double)a1;
+- (void)insertNotificationRequest:(id)a0;
+- (void)clearAll;
+- (void)notificationListBaseComponentDidRemoveAll:(id)a0;
+- (void)updateNotificationSectionSettings:(id)a0 previousSectionSettings:(id)a1;
+- (id)notificationListView:(id)a0 viewForItemAtIndex:(unsigned long long)a1;
+- (void)_collapseAllSectionListViews;
+- (void)setAdjustsFontForContentSizeCategory:(BOOL)a0;
+- (void)removeNotificationRequest:(id)a0;
+- (void).cxx_destruct;
+- (void)notificationSummaryOrderProviderRequestsReloadingLeadingSummaryPlatterView:(id)a0;
+- (void)_collapseAllGroupListViews;
+- (id)titlesForSectionListsInSummaryForSummaryOrderProvider:(id)a0;
+- (BOOL)swipeInteraction:(id)a0 shouldRevealActionsFromLayoutLocation:(unsigned long long)a1;
+- (BOOL)adjustsFontForContentSizeCategory;
+- (id)listComponentDelegateForSummaryPlatterViewForNotificationSummaryOrderProvider:(id)a0;
+- (void)notificationSummaryOrderProviderDidTapOnLeadingSummaryPlatterView:(id)a0;
+- (BOOL)adjustForContentSizeCategoryChange;
+
+@end

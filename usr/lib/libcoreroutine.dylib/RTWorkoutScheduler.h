@@ -1,0 +1,80 @@
+@class FBSDisplayLayoutMonitorConfiguration, RTDataProtectionManager, NSDate, RTWorkoutRouteManager, RTDefaultsManager, RTPlatform, RTTimerManager, RTBatteryManager, RTWorkoutSchedulerMetrics, RTXPCActivityManager, RTHealthKitManager, RTLocationManager, RTTimer, FBSDisplayLayoutMonitor;
+
+@interface RTWorkoutScheduler : RTService
+
+@property (retain, nonatomic) RTBatteryManager *batteryManager;
+@property (retain, nonatomic) RTXPCActivityManager *xpcActivityManager;
+@property (retain, nonatomic) RTDataProtectionManager *dataProtectionManager;
+@property (retain, nonatomic) RTWorkoutRouteManager *workoutRouteManager;
+@property (retain, nonatomic) RTHealthKitManager *healthKitManager;
+@property (retain, nonatomic) RTLocationManager *locationManager;
+@property (retain, nonatomic) RTTimerManager *timerManager;
+@property (retain, nonatomic) RTDefaultsManager *defaultsManager;
+@property (retain, nonatomic) RTPlatform *platform;
+@property (nonatomic) unsigned long long singleWorkoutClusteringTaskState;
+@property (nonatomic) unsigned long long updateRelevanceScoreTaskState;
+@property (nonatomic) unsigned long long currentNWorkouts;
+@property (nonatomic) unsigned long long totalWorkouts;
+@property (retain, nonatomic) NSDate *lastClusterAndSyncDate;
+@property (retain, nonatomic) NSDate *lastWorkoutComparisonDate;
+@property (retain, nonatomic) NSDate *lastRelevanceScoreUpdateDate;
+@property (retain, nonatomic) NSDate *lastSingleWorkoutClusteringDate;
+@property (retain, nonatomic) NSDate *lastPruneDistanceMatrixDate;
+@property (retain, nonatomic) RTTimer *clusteringDeferralTimer;
+@property long long encryptedDataAvailability;
+@property (retain, nonatomic) RTWorkoutSchedulerMetrics *metrics;
+@property (retain, nonatomic) FBSDisplayLayoutMonitor *layoutMonitor;
+@property (retain, nonatomic) FBSDisplayLayoutMonitor *displayLayoutMonitor;
+@property (retain, nonatomic) FBSDisplayLayoutMonitorConfiguration *configuration;
+
++ (id)taskStateToString:(unsigned long long)a0;
++ (id)taskTypeToString:(unsigned long long)a0;
+
+- (void)_evaluateVersionChange;
+- (void)onHealthKitNotification;
+- (void)_shutdownWithHandler:(id /* block */)a0;
+- (void)_scheduleWorkoutComparisonIfCharging;
+- (void)_scheduleUpdateRelevanceScore;
+- (void)_setup;
+- (void)_onHealthKitNotification;
+- (void)_onDailyXPCActivity;
+- (void)_schedulePruneDistanceMatrix;
+- (void)_onCurrentLocationUpdate:(id)a0;
+- (void)clearTaskStatesWithHandler:(id /* block */)a0;
+- (void)logTaskStates;
+- (void)_registerForCircularRegionEvents;
+- (BOOL)_isEligibleForPruneDistanceMatrix;
+- (BOOL)_didClusterAndSyncOccurInLastInterval;
+- (void)_getCurrentLocationAndMonitorForRegion;
+- (void)onCurrentLocationUpdate:(id)a0;
+- (void)_scheduleClusteringTask:(unsigned long long)a0;
+- (void)handleCircularRegionCallback:(long long)a0 region:(id)a1 clientIdentifier:(id)a2;
+- (BOOL)_deviceEligible;
+- (void)_evaluateSchedulingTaskPriority;
+- (long long)_chargerConnectionState;
+- (void)_onDataProtectionNotification:(id)a0;
+- (BOOL)checkRoutinedFootprint;
+- (BOOL)_isEligibleForWorkoutComparison;
+- (void).cxx_destruct;
+- (BOOL)_isPasscodeDisabled;
+- (void)_onLayoutMonitorUpdateDisplayBacklightLevelNotification:(long long)a0;
+- (void)_clearOutSchedulerState;
+- (BOOL)_isSchedulingWorkDone;
+- (BOOL)_isEligibleForInitialClusterAndSync;
+- (id)initWithBatteryManager:(id)a0 dataProtectionManager:(id)a1 workoutRouteManager:(id)a2 healthKitManager:(id)a3 locationManager:(id)a4 defaultsManager:(id)a5 platform:(id)a6 xpcActivityManager:(id)a7;
+- (BOOL)_isVersionChangeDetected;
+- (unsigned long long)topNWorkoutsWithIncrement:(unsigned long long)a0;
+- (BOOL)_isEligibibleForRelevanceScoreUpdateRetry;
+- (void)_startClusteringBufferTimerWithLatency:(double)a0;
+- (void)layoutMonitorDidUpdateDisplayLayout:(id)a0 withContext:(id)a1;
+- (void)_setupDisplayLayoutMonitor;
+- (void)_scheduleSingleWorkoutClustering;
+- (void)saveTaskStates;
+- (void)onDataProtectionNotification:(id)a0;
+- (void)readTaskStates;
+- (void)_handleVersionChange;
+- (id)initWithBatteryManager:(id)a0 dataProtectionManager:(id)a1 workoutRouteManager:(id)a2 healthKitManager:(id)a3 locationManager:(id)a4 defaultsManager:(id)a5 timerManager:(id)a6 platform:(id)a7 xpcActivityManager:(id)a8;
+- (BOOL)_isEligibleForClusterAndSync;
+- (void)_onClusteringTimerExpiry;
+
+@end

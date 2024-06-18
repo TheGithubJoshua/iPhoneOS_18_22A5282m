@@ -1,0 +1,26 @@
+@class NSString, NSMutableArray;
+
+@interface PersonLinkingLinkedPairEvent : PBCodable <NSCopying>
+
+@property (readonly, nonatomic) BOOL hasUserID;
+@property (retain, nonatomic) NSString *userID;
+@property (retain, nonatomic) NSMutableArray *pairs;
+
++ (Class)pairsType;
+
+- (void)mergeFrom:(id)a0;
+- (id)dictionaryRepresentation;
+- (void)copyTo:(id)a0;
+- (unsigned long long)hash;
+- (void)writeTo:(id)a0;
+- (void).cxx_destruct;
+- (BOOL)isEqual:(id)a0;
+- (id)description;
+- (BOOL)readFrom:(id)a0;
+- (id)copyWithZone:(struct _NSZone { } *)a0;
+- (void)clearPairs;
+- (unsigned long long)pairsCount;
+- (void)addPairs:(id)a0;
+- (id)pairsAtIndex:(unsigned long long)a0;
+
+@end
